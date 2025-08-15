@@ -31,7 +31,10 @@ def build_predictions(resps: list[list[str]], docs: list[dict]) -> list[list[str
 
 
 def clean_text(text: str) -> str:
-    return re.sub(r"\n(▁+)", lambda m: "\n" + " " * len(m.group(1)), text).lstrip()
+    return (
+        re.sub(r"\n(▁+)", lambda m: "\n" + " " * len(m.group(1)), text).lstrip()
+        + "\n    "
+    )
 
 
 def build_predictions_instruct(
